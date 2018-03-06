@@ -54,5 +54,8 @@ COPY uwsgi_params $DOCKYARD_SRVPROJ
 RUN pip3 install --upgrade pip
 RUN pip3 install -r $DOCKYARD_SRVPROJ/requirements.txt
 
+#If Django file is not present run:
+RUN django-admin.py startproject django_app $DOCKYARD_SRVPROJ/django_app
+
 EXPOSE 80
 CMD ["supervisord", "-n"]
